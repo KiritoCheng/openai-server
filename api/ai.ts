@@ -12,6 +12,7 @@ const openai = new OpenAIApi(configuration);
 export const routes = (app: any) => {
   return {
     chart: app.use("/api/chart", async (req: any, res: any) => {
+      const { content = '' } = req.query || {}
 
       try {
 
@@ -20,11 +21,11 @@ export const routes = (app: any) => {
           method: 'POST',
           headers: {
             'Content-Type': "application/json",
-            'Authorization': `Bearer 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`,
+            'Authorization': `Bearer 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`,
           },
           data: {
             model: "gpt-3.5-turbo",
-            messages: [{ role: "user", content: "test" }],
+            messages: [{ role: "user", content }],
           }
         }
 
