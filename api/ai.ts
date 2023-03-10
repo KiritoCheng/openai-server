@@ -20,7 +20,7 @@ export const routes = (app: any) => {
           method: 'POST',
           headers: {
             'Content-Type': "application/json",
-            'Authorization': `Bearer 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`,
+            'Authorization': `Bearer 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`,
           },
           data: {
             model: "gpt-3.5-turbo",
