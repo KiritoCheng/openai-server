@@ -48,6 +48,7 @@ export const routes = (app: any) => {
 
         // console.log("返参", completion.data);
 
+        console.log("返参", completion.data);
         if (completion.data) {
           const { message } = completion.data.choices[0];
           const { content } = message || {};
