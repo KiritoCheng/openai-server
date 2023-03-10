@@ -37,6 +37,7 @@ export const routes = (app: any) => {
               return res.status(200).json(content);
             }
           }).catch(err => {
+            console.log("返参", err);
             const { message = "" } = err || {};
             return res.status(404).json({ message });
           });
@@ -57,6 +58,7 @@ export const routes = (app: any) => {
 
         // return res.status(400).json("Error");
       } catch (err: any) {
+        console.log("错误", err);
         const { message = "" } = err || {};
         return res.status(404).json({ message });
       }
