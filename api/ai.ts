@@ -17,6 +17,7 @@ export const routes = (app: any) => {
 
         const config = {
           url: "https://api.openai.com/v1/chat/completions",
+          method: 'POST',
           headers: {
             "Content-Type": "application/json",
             "Authorization": `Bearer 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`,
