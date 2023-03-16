@@ -2,17 +2,17 @@ import axios from "axios";
 import { Configuration, OpenAIApi } from "openai";
 // import
 
-const configuration = new Configuration({
-  organization: "org-5ZqRIjonyON5xbje0fcE7zBh",
-  apiKey: process.env.OPENAI_API_KEY,
-});
-
-const openai = new OpenAIApi(configuration);
-
 export const routes = (app: any) => {
   return {
     chart: app.use("/api/chart", async (req: any, res: any) => {
-      const { content = "" } = req.query || {};
+      const { content = "", OPENAI_API_KEY = "" } = req.query || {};
+
+      const configuration = new Configuration({
+        organization: "org-5ZqRIjonyON5xbje0fcE7zBh",
+        apiKey: OPENAI_API_KEY,
+      });
+
+      const openai = new OpenAIApi(configuration);
       const response = await openai.createChatCompletion({
         model: "gpt-3.5-turbo",
         messages: [{ role: "user", content }],
