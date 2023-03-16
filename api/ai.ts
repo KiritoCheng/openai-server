@@ -13,7 +13,7 @@ export const routes = (app: any) => {
       });
 
       const openai = new OpenAIApi(configuration);
-      const response: any = await openai.createChatCompletion({
+      const response = await openai.createChatCompletion({
         model: "gpt-3.5-turbo",
         messages: [{ role: "user", content }],
         max_tokens: 255,
@@ -21,10 +21,10 @@ export const routes = (app: any) => {
       });
 
       try {
-        const { text } = response.data.choices[0];
+        const { message } = response.data.choices[0];
         // 打印 API 返回的结果
         console.log(response.data.choices[0]);
-        return res.status(200).json(text);
+        return res.status(200).json(message);
       } catch (err: any) {
         console.log("错误", err);
         const { message = "" } = err || {};
