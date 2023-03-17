@@ -1,5 +1,5 @@
+import axios from "axios";
 import { Configuration, OpenAIApi } from "openai";
-// import
 
 export const routes = (app: any) => {
   return {
@@ -20,6 +20,7 @@ export const routes = (app: any) => {
           temperature: 0.5,
         });
 
+        console.log(response.data.choices[0]);
         const { message } = response.data.choices[0];
         // 打印 API 返回的结果
         return res.status(200).json(message);
