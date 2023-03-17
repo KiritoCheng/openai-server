@@ -3,7 +3,7 @@ import { Configuration, OpenAIApi } from "openai";
 
 export const routes = (app: any) => {
   return {
-    "chart3.5": app.use("/api/chart3.5", async (req: any, res: any) => {
+    chart3: app.use("/api/chart3.5", async (req: any, res: any) => {
       const { content = "", OPENAI_API_KEY = "" } = req.query || {};
 
       const configuration = new Configuration({
@@ -28,6 +28,7 @@ export const routes = (app: any) => {
         return res.status(404).json({ message });
       }
     }),
+
     chart: app.use("/api/chart", async (req: any, res: any) => {
       const { content = "", OPENAI_API_KEY = "" } = req.query || {};
       const configuration = new Configuration({
