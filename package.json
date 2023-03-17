@@ -5,9 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon index.ts",
-    "build": "node_modules/typescript/bin/tsc",
-    "deploy": "node build/index.js"
+    "start": "nodemon src/index.ts",
+    "build": "rm -rf build && node_modules/typescript/bin/tsc --build",
+    "deploy": "node build/src/index.js"
   },
   "author": "",
   "license": "ISC",
