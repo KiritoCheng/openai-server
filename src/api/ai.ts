@@ -19,7 +19,6 @@ export const routes = (app: any) => {
         });
 
         const { message } = response.data.choices[0];
-        // 打印 API 返回的结果
         return res.status(200).json(message);
       } catch (err: any) {
         const { message = "" } = err || {};
@@ -45,11 +44,9 @@ export const routes = (app: any) => {
           temperature: 0.7,
         });
         const { text } = response.data.choices[0];
-        // 打印 API 返回的结果
-        console.log(response.data.choices[0]);
+        console.log("response", response.data);
         return res.status(200).json(text);
       } catch (err: any) {
-        console.log("错误", err);
         const { message = "" } = err || {};
         return res.status(404).json({ message });
       }
