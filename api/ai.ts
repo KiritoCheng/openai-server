@@ -3,7 +3,7 @@ import { Configuration, OpenAIApi } from "openai";
 
 export const routes = (app: any) => {
   return {
-    chart3: app.use("/api/chart3.5", async (req: any, res: any) => {
+    chartOld: app.use("/api/chart3.5", async (req: any, res: any) => {
       const { content = "", OPENAI_API_KEY = "" } = req.query || {};
 
       const configuration = new Configuration({
