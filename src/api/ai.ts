@@ -2,7 +2,7 @@ import { Configuration, OpenAIApi } from "openai";
 
 export const routes = (app: any) => {
   return {
-    "chart3.5": app.use("/api/chart3.5", async (req: any, res: any) => {
+    chart: app.use("/api/chart", async (req: any, res: any) => {
       try {
         const { content = "", OPENAI_API_KEY = "" } = req.query || {};
 
@@ -15,7 +15,7 @@ export const routes = (app: any) => {
         const response = await openai.createChatCompletion({
           model: "gpt-3.5-turbo",
           messages: [{ role: "user", content }],
-          temperature: 0.5,
+          temperature: 0.7,
         });
 
         const { message } = response.data.choices[0];
@@ -25,7 +25,7 @@ export const routes = (app: any) => {
         return res.status(404).json({ message });
       }
     }),
-    chart: app.use("/api/chart", async (req: any, res: any) => {
+    chartBeta: app.use("/api/chartBeta", async (req: any, res: any) => {
       try {
         const { content = "", OPENAI_API_KEY = "" } = req.query || {};
         const configuration = new Configuration({
@@ -34,21 +34,18 @@ export const routes = (app: any) => {
         });
         const openai = new OpenAIApi(configuration);
 
-        const model_engine = "text-davinci-002-render-sha";
-
         const response = await openai.createCompletion({
-          model: model_engine,
+          model: "text-davinci-002-render-sha",
           prompt: content,
-          // n: 1,
-          // stop: "\n",
           temperature: 0.7,
         });
 
-        console.log("response", response.data);
+        console.log("response", response);
 
         const { text } = response.data.choices[0];
         return res.status(200).json(text);
       } catch (err: any) {
+        console.log("Err", err);
         const { message = "" } = err || {};
         return res.status(404).json({ message });
       }
