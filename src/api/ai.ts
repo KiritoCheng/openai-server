@@ -39,12 +39,14 @@ export const routes = (app: any) => {
         const response = await openai.createCompletion({
           model: model_engine,
           prompt: content,
-          n: 1,
-          stop: "\n",
+          // n: 1,
+          // stop: "\n",
           temperature: 0.7,
         });
-        const { text } = response.data.choices[0];
+
         console.log("response", response.data);
+
+        const { text } = response.data.choices[0];
         return res.status(200).json(text);
       } catch (err: any) {
         const { message = "" } = err || {};
