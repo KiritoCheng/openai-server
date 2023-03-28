@@ -3,7 +3,7 @@ import { marked } from "marked";
 
 export const routes = (app: any) => {
   return {
-    chart: app.post("/api/chart", async (req: any, res: any) => {
+    chart: app.use("/api/chart", async (req: any, res: any) => {
       try {
         const { content = "", OPENAI_API_KEY = "" } = req.query || {};
 
