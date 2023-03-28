@@ -1,4 +1,5 @@
 import { Configuration, OpenAIApi } from "openai";
+import { marked } from "marked";
 
 export const routes = (app: any) => {
   return {
@@ -19,7 +20,8 @@ export const routes = (app: any) => {
         });
 
         const { message } = response.data.choices[0];
-        return res.status(200).json(message);
+        const messageHtml = message?.content || "";
+        return res.status(200).json(marked.parse(messageHtml));
       } catch (err: any) {
         const { message = "" } = err || {};
         return res.status(404).json({ message });
