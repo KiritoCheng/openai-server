@@ -18,8 +18,7 @@ export const routes = (app: any) => {
 
         const openai = new OpenAIApi(configuration);
         const response = await openai.createChatCompletion({
-          // model: "gpt-3.5-turbo",
-          model: "text-davinci-002",
+          model: "gpt-3.5-turbo",
           messages: [{ role: "user", content }],
           temperature: 0.7,
         });
