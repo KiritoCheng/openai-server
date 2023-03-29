@@ -2,6 +2,7 @@ import express from "express";
 import cookieParser from "cookie-parser";
 import bodyParser from "body-parser";
 import { routes } from "./api/ai";
+import { jsonResponse } from "./middlewares/jsonResponse";
 
 const app: express.Application = express();
 
@@ -11,6 +12,7 @@ const port: number = 1200;
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(jsonResponse);
 
 // allow custom header and CORS
 app.all("*", function (req, res, next) {
