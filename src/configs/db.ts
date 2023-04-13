@@ -2,10 +2,10 @@ import mysql from "mysql2";
 
 // 创建连接池
 const pool = mysql.createPool({
-  host: "136.244.66.213",
+  host: "localhost",
   user: "root",
-  password: "Kirito123",
-  database: "openai",
+  password: "Your password",
+  database: "Your database",
   port: 3306,
   waitForConnections: true, // 当连接池没有可用连接时，等待（true）还是抛错（false）
   connectionLimit: 10, // 连接数限制
